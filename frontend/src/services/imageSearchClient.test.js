@@ -16,7 +16,9 @@ test('normalizeSearchResults maps backend items into UI cards', () => {
       title: '红色连衣裙',
       scoreText: '87.32%',
       imageUrl: '/a.jpg',
-      vectorStatus: 'synced'
+      vectorStatus: 'synced',
+      contentType: '-',
+      createdAt: '-'
     }
   ])
 })
@@ -39,4 +41,25 @@ test('textSearch posts keyword and pagination to Java API', async () => {
   assert.equal(calls[0].options.method, 'POST')
   assert.equal(calls[0].options.headers['Content-Type'], 'application/json')
   assert.equal(calls[0].options.body, JSON.stringify({ keyword: '红色连衣裙', page: 2, pageSize: 12 }))
+})
+
+test('uploadImage posts selected file to Java API as multipart form data', async () => {
+  const calls = []
+  const file = new File(['image-bytes'], 'dress.jpg', { type: 'image/jpeg' })
+  const client = createImageSearchClient({
+    fetchImpl: async (url, options) => {
+      calls.push({ url, options })
+      return {
+        ok: true,
+        json: async () => ({ imageId: 'img_1', status: 'pending' })
+      }
+    }
+  })
+
+  const response = await client.uploadImage(file)
+
+  assert.deepEqual(response, { imageId: 'img_1', status: 'pending' })
+  assert.equal(calls[0].url, '/api/images')
+  assert.equal(calls[0].options.method, 'POST')
+  assert.equal(calls[0].options.body.get('file'), file)
 })
