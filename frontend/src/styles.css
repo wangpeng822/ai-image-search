@@ -1,0 +1,285 @@
+:root {
+  font-family: Inter, "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  color: #172033;
+  background: #f4f6f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  background: #1f6f5f;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 14px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #fff;
+  border-right: 1px solid #dde4ec;
+  padding: 24px;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #172033;
+  color: #fff;
+  font-weight: 800;
+}
+
+.brand h1,
+.toolbar h2,
+.image-card h3 {
+  margin: 0;
+}
+
+.brand p,
+.toolbar span,
+.image-card p,
+.upload-zone small,
+.task-item span {
+  color: #657287;
+}
+
+.panel {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.panel-title {
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.upload-zone {
+  align-items: center;
+  background: #f7fafc;
+  border: 1px dashed #a9b6c5;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+  min-height: 118px;
+  text-align: center;
+}
+
+.upload-zone.compact {
+  min-height: 86px;
+}
+
+.upload-zone input {
+  display: none;
+}
+
+.search-row {
+  display: flex;
+  gap: 8px;
+}
+
+.search-row input {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  min-width: 0;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.task-list {
+  display: grid;
+  gap: 10px;
+}
+
+.task-item {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.task-item div {
+  display: grid;
+  gap: 2px;
+}
+
+.task-item em {
+  border-radius: 999px;
+  font-style: normal;
+  padding: 4px 8px;
+}
+
+.task-success,
+.status-synced {
+  background: #e7f7ef;
+  color: #13734c;
+}
+
+.task-pending,
+.status-pending {
+  background: #fff4d8;
+  color: #8a5a00;
+}
+
+.task-failed,
+.status-failed {
+  background: #ffe7e7;
+  color: #ad2626;
+}
+
+.content {
+  padding: 28px;
+}
+
+.toolbar {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  color: #1f6f5f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.toolbar-actions select {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.stats {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 18px;
+}
+
+.stats div {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.stats span {
+  color: #657287;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.stats strong {
+  font-size: 28px;
+}
+
+.result-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.image-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image-card img {
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.image-card-body {
+  padding: 14px;
+}
+
+.score {
+  color: #1f6f5f;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.meta {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.status {
+  border-radius: 999px;
+  padding: 4px 8px;
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid #dde4ec;
+  }
+
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
