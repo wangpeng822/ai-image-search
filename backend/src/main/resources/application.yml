@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ai-image-search-backend
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 25MB
+
+ai-image-search:
+  vector-agent:
+    base-url: http://localhost:8000
+    enabled: false
